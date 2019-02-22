@@ -153,4 +153,20 @@ export class HidenavStretchheaderComponent implements OnInit, AfterViewInit {
             });
         });
     }
+
+    public expand() {
+        this.content.scrollToPoint(0, 0, 200);
+    }
+
+    public shrink() {
+        if(this.contentElem.scrollTop < (this.shrinkexpandHeight - this.shrinkexpandheaderHeight))
+            this.content.scrollToPoint(0, (this.shrinkexpandHeight - this.shrinkexpandheaderHeight), 200);
+    }
+
+    public toggle() {
+        if(this.contentElem.scrollTop < (this.shrinkexpandHeight - this.shrinkexpandheaderHeight))
+            this.content.scrollToPoint(0, (this.shrinkexpandHeight - this.shrinkexpandheaderHeight), 200);
+        else
+            this.content.scrollToPoint(0, 0, 200);
+    }
 }
