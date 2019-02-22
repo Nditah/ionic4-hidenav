@@ -114,7 +114,7 @@ Inputs for `#shrinkexpand`:
 | ----------------- | ------------- | ----------------------------------------------------------------------- |
 | `header-height`   | **required**  | height to which the header shrinks to                                   |
 | `opacity-factor`  | optional      | `1 - 10` opacity of shrunk header overlay (default = 0)                 |
-| `opacity-oolor`   | optional      | accepts any css color description (name, rgb, # ..) (default = black)  |
+| `opacity-color`   | optional      | accepts any css color description (name, rgb, # ..) (default = black)  |
 
 #### *(Optional)* Add static elements:
 These come in handy to make the header look like a navigation bar. If you want to add any buttons or titles you need to use the `#static` reference variable:
