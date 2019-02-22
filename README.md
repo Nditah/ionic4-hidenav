@@ -145,9 +145,9 @@ you can subscribe to the `(scroll)` event for example like:
 The $event variable returns the current header height.
 ### Functions:
 
-`expand()`: scrolls content to top and expands the header.
-`shrink()`: scrolls just about enought to shrink the header if it is expanded.
-`toggle()`: toggles between `expand()` and `shrink()`.
+- `expand()`: scrolls content to top and expands the header.
+- `shrink()`: scrolls just about enought to shrink the header if it is expanded.
+- `toggle()`: toggles between `expand()` and `shrink()`.
 ---
 ## Part2: Hide Header on scroll
 This function is fairly simple to implement than the previous one, all you will have to do is define directives `hidenav-header="name"` and `hidenav-content="name"` in the page you want to use.
