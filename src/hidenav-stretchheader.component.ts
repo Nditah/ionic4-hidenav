@@ -14,8 +14,32 @@ import {IonContent} from '@ionic/angular';
 
 @Component({
     selector: 'hidenav-stretchheader',
-    styleUrls: ['./hidenav-stretchheader.component.scss'],
     template: `
+        <style>
+            .overlay {
+                position: absolute;
+                height: inherit;
+                width: inherit;
+                z-index: 101;
+                pointer-events: none;
+                /*opacity: var(--opacity);*/
+                background: var(--color);
+                filter: opacity(0);
+                --opacity: 0;
+                --color: black;
+            }
+            :host{
+                z-index: 1;
+            }
+            :host.md{
+                -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.53);
+                -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.53);
+                box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.53);
+            }
+            :host.ios {
+                border-bottom: 1px solid #5a5e63;
+            }
+        </style>
         <div class="overlay"></div>
         <ng-content></ng-content>
     `
@@ -28,8 +52,6 @@ export class HidenavStretchheaderComponent implements OnInit, AfterViewInit {
 
     @Output() scroll: EventEmitter<number> = new EventEmitter<number>();
 
-    shrinkHeight: number;
-    expandHeight: number;
     shrinkexpandHeight: number;
     shrinkexpandheaderHeight: number;
 
