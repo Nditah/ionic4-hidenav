@@ -109,6 +109,7 @@ add the HTML Element that should shrink and expand and give it the `#shrinkexpan
 </hidenav-stretchheader>
 ```
 Inputs for `#shrinkexpand`:
+
 | input             | type          | Description                                                             |
 | ----------------- | ------------- | ----------------------------------------------------------------------- |
 | `header-height`   | **required**  | height to which the header shrinks to                                   |
