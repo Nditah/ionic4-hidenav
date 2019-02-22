@@ -110,11 +110,12 @@ add the HTML Element that should shrink and expand and give it the `#shrinkexpan
 ```
 Inputs for `#shrinkexpand`:
 
-| input             | type          | Description                                                             |
-| ----------------- | ------------- | ----------------------------------------------------------------------- |
-| `header-height`   | **required**  | height to which the header shrinks to                                   |
-| `opacity-factor`  | optional      | `1 - 10` opacity of shrunk header overlay (default = 0)                 |
-| `opacity-color`   | optional      | accepts any css color description (name, rgb, # ..) (default = black)  |
+| input             | type                         | Description                                                   |
+| ----------------- | ---------------------------- | ------------------------------------------------------------- |
+| `header-height`   | **required**                 | height to which the header shrinks to                         |
+| `opacity-factor`  | optional / default = 0       | `1 - 10` opacity of shrunk header overlay                     |
+| `opacity-color`   | optional / default = black   | accepts any css color description (name, rgb, # ..)           |
+| `init-expanded`   | optional / default = false   | set to `true` if you want the header to initiate expanded     |
 
 #### *(Optional)* Add static elements:
 These come in handy to make the header look like a navigation bar. If you want to add any buttons or titles you need to use the `#static` reference variable:

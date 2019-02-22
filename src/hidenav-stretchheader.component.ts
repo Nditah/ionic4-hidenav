@@ -59,8 +59,10 @@ export class HidenavStretchheaderComponent implements OnInit, AfterViewInit {
 
     opacityFactor: any;
     opacityColor: any;
+    initExpanded = false;
 
     contentElem;
+    guardEvents = true;
 
     mode: any = 'ios';
 
@@ -85,6 +87,8 @@ export class HidenavStretchheaderComponent implements OnInit, AfterViewInit {
         if (this.shrinkexpand) {
             let parent = this.shrinkexpand.nativeElement.parentNode;
             let elem = this.shrinkexpand.nativeElement;
+            if(elem.getAttribute('init-expanded'))
+                this.initExpanded = true;
             this.shrinkexpandheaderHeight = parseInt(elem.getAttribute('header-height'), 10);
             this.opacityFactor = parseInt(elem.getAttribute('opacity-factor'), 10);
             this.opacityColor = elem.getAttribute('opacity-color');
@@ -136,16 +140,25 @@ export class HidenavStretchheaderComponent implements OnInit, AfterViewInit {
                 elemPad.style.height = Math.max(0, (x - (this.contentElem.scrollHeight - this.contentElem.offsetHeight) + (this.shrinkexpandHeight - this.shrinkexpandheaderHeight))) + 'px';
             }, 10);
             this.contentElem.appendChild(elemPad);
-            this.content.scrollByPoint(0, this.shrinkexpandHeight - this.shrinkexpandheaderHeight, 0).then(() => {
+            let scrollDist = this.initExpanded ? 2 : (this.shrinkexpandHeight - this.shrinkexpandheaderHeight);
+            this.content.scrollByPoint(0, scrollDist, 0).then(() => {
                 this.content.scrollEvents = true;
                 this.content.ionScroll.subscribe(e => {
+                    if(this.initExpanded){
+                        this.content.scrollToPoint(0, 0, 0).then(() => {
+                            this.initExpanded = false;
+                        })
+                    }
                     let height = Math.max(Math.min(this.shrinkexpandHeight, this.shrinkexpandHeight - e.detail.scrollTop), this.shrinkexpandheaderHeight)
                     elem.style.transform = 'translate3d(0, ' + -(Math.min((this.shrinkexpandHeight - this.shrinkexpandheaderHeight) / 2, e.detail.scrollTop / 2)) + 'px, 0)';
                     parent.style.height = height + 'px';
                     overlay.style.setProperty('--opacity', this.opacityFactor / 10 * Math.min(e.detail.scrollTop / (this.shrinkexpandHeight / 2), 1));
                     //event emitter
-                    if(this.lastscroll != height && this.lastscroll != 0){
-                        this.scroll.emit(height)
+                    setTimeout(() => {
+                        this.guardEvents = false;
+                    }, 10);
+                    if(this.lastscroll != height && !this.guardEvents){
+                        this.scroll.emit(height);
                     }
                     this.lastscroll = height
                     //
@@ -158,12 +171,12 @@ export class HidenavStretchheaderComponent implements OnInit, AfterViewInit {
         this.content.scrollToPoint(0, 0, 200);
     }
 
-    public shrink() {
+    shrink() {
         if(this.contentElem.scrollTop < (this.shrinkexpandHeight - this.shrinkexpandheaderHeight))
             this.content.scrollToPoint(0, (this.shrinkexpandHeight - this.shrinkexpandheaderHeight), 200);
     }
 
-    public toggle() {
+    toggle() {
         if(this.contentElem.scrollTop < (this.shrinkexpandHeight - this.shrinkexpandheaderHeight))
             this.content.scrollToPoint(0, (this.shrinkexpandHeight - this.shrinkexpandheaderHeight), 200);
         else
