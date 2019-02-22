@@ -144,6 +144,7 @@ you can subscribe to the `(scroll)` event for example like:
 ```
 The $event variable returns the current header height.
 ### Functions:
+
 `expand()`: scrolls content to top and expands the header.
 `shrink()`: scrolls just about enought to shrink the header if it is expanded.
 `toggle()`: toggles between `expand()` and `shrink()`.
