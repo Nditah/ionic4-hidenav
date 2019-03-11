@@ -174,5 +174,5 @@ In the following example, both header and content have the same name so they can
 This project's main motivation is to implement hardware accelerated header animations to be used with **zyra/super-tabs**, but up until now there are no releases for it for Ionic 4. I do not intend to implement it for the default ionic tabs because frankly they are inferior to super-tabs and I have no interest in using them at all..
 
 [npm-url]: https://npmjs.org/package/ionic4-hidenav
-[npm-image]: https://img.shields.io/badge/npm-0.0.3-green.svg
+[npm-image]: https://img.shields.io/badge/npm-0.0.4-green.svg
  

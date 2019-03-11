@@ -1,6 +1,6 @@
 {
   "name": "ionic4-hidenav",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Ionic 4 header controller",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
