@@ -136,7 +136,7 @@ These come in handy to make the header look like a navigation bar. If you want t
     </div>
 </hidenav-stretchheader>
 ```
-You can add as many as you need
+You can add as many `#static` elements as you need.
 
 ### Events: 
 you can subscribe to the `(scroll)` event for example like:
@@ -148,9 +148,12 @@ you can subscribe to the `(scroll)` event for example like:
 The $event variable returns the current header height.
 ### Functions:
 
-- `expand()`: scrolls content to top and expands the header.
-- `shrink()`: scrolls just about enought to shrink the header if it is expanded.
-- `toggle()`: toggles between `expand()` and `shrink()`.
+- `expand(duration)`: scrolls content to top and expands the header.
+- `shrink(duration)`: scrolls just about enought to shrink the header if it is expanded.
+- `toggle(duration)`: toggles between `expand()` and `shrink()`.
+
+Note that `duration` is optional and defaults to 200.
+
 ---
 ## Part2: Hide Header on scroll
 This function is fairly simple to implement than the previous one, all you will have to do is define directives `hidenav-header="name"` and `hidenav-content="name"` in the page you want to use.
@@ -174,5 +177,5 @@ In the following example, both header and content have the same name so they can
 This project's main motivation is to implement hardware accelerated header animations to be used with **zyra/super-tabs**, but up until now there are no releases for it for Ionic 4. I do not intend to implement it for the default ionic tabs because frankly they are inferior to super-tabs and I have no interest in using them at all..
 
 [npm-url]: https://npmjs.org/package/ionic4-hidenav
-[npm-image]: https://img.shields.io/badge/npm-0.0.4-green.svg
+[npm-image]: https://img.shields.io/badge/npm-0.0.5-green.svg
  
